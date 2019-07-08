@@ -18,6 +18,10 @@ I built this workflow because:
 
 2. I want to build my own knowledge base instead of community-driven cheat sheets like [tldr](https://github.com/tldr-pages/tldr) does.
 
+**Disclaimer**:
+
+All codes in directory `workflow` are dependencies from [this project](https://github.com/deanishe/alfred-workflow). They're not my work and is the only "dependency" for this project. Since it's included in this repo, the workflow user doesn't have to concern about dependencies.
+
 # Download via [release](https://github.com/wx-Yao/alfred-cheat/releases)
 
 # How it works
