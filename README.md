@@ -28,7 +28,7 @@ All codes in directory `workflow` are dependencies from [this project](https://g
 
 1. You define a directory to store your cheat sheets, which are essentially text files. And name the file the command your wanna record. e.g, `nmap`, `top`, `tar` etc. (tips: you can start with the cheat sheets provided by [cheat](https://github.com/cheat/cheat))
 
-2. You write your cheat sheet according to the ![rules](#rules) (very intuitive and tolerant) bit by bit.
+2. You write your cheat sheet according to the [rules](#parsing-rule) (very intuitive and tolerant) bit by bit.
 
 3. Tell the workflow where that directory is and start searching.
 
