@@ -48,6 +48,10 @@ Then, you're good to go.
 
 - To search across all your sheets for some keyword: `cheat --search <keyword>`
 
+- When you find your desired record and you wanna paste it directly to the app you're using (e.g., Terminal or iTerm2), hit `Enter`. This behavior can be changed in the Alfred setting ([#3](https://github.com/wx-Yao/alfred-cheat/issues/2#issuecomment-509689404)).
+
+- If you like to just copy, hit `cmd-c`.
+
 # Parsing rule
 
 It's not even a rule... You just need to remember two things when writing your cheat sheet:
