@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import os
+from workflow import MATCH_ALL, MATCH_ALLCHARS
 
 class Parser:
     def __init__(self,path):
@@ -47,4 +48,4 @@ class Parser:
     def filter(self, content, keyword, workflow):
         def searchIndex(item):
             return u" ".join([item["comment"],item["command"]])
-        return workflow.filter(keyword, content,key=searchIndex, match_on=33, min_score=40)
+        return workflow.filter(keyword, content,key=searchIndex, match_on=MATCH_ALL ^ MATCH_ALLCHARS, min_score=50)

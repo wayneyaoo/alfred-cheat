@@ -9,16 +9,23 @@ class Options:
         return None
 
     def search(self, sheetName, keyword):
+        if sheetName not in self._parser.availableSheets():
+            Options.warning("Cheat sheet not found.","", self._workflow)
+            return None
         if sheetName==None:
             ret=self._parser.searchAcrossAll(keyword, self._workflow)
         else:
             ret=self._parser.searchInSheet(keyword, sheetName, self._workflow)
         if ret==[]:
             Options.warning("Not found", "No match found for search {}".format(keyword), self._workflow)
+            return None
         for item in ret:
             self._workflow.add_item(
                     title=item["command"],
-                    subtitle=item["comment"]
+                    subtitle=item["comment"],
+                    copytext=item.get("command"),
+                    valid=True,
+                    arg=item.get("command")
                     )
         return None
 
@@ -28,7 +35,9 @@ class Options:
             self._workflow.add_item(
                     title=item.get("command"),
                     subtitle=item.get("comment"),
-                    valid=False
+                    valid=True,
+                    copytext=item.get("command"),
+                    arg=item.get("command")
                     )
         return None
 

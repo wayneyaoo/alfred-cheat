@@ -16,10 +16,10 @@ def main(workflow):
     parser=Parser(config.getPath())
     options=Options(parser, workflow)
 
-    tokens=query.strip().split(" ",2)
+    tokens=query.strip().split(" ",1)
     tokens=[i.strip() for i in tokens if i!=""]
 
-    if len(tokens)!=2:
+    if len(tokens)<2:
         sheetName="" if len(tokens)==0 else tokens[0]
         handler=options.showAvailable if sheetName not in parser.availableSheets() else options.list
         handler(sheetName)
