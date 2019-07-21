@@ -1,4 +1,4 @@
-# Alfred-cheat <img src="icon.png" width="100" align="right"/>
+# Alfred-cheat <img src="icon.png" width="100" align="right"/> [![Github All Releases](https://img.shields.io/github/downloads/wx-Yao/alfred-cheat/total.svg)]()
 
 **Start writing your very own cheat sheets in your way and make them searchable using Alfred!**
 
@@ -91,4 +91,4 @@ This workflow works out of the box (zero dependencies). It's tested on **macOS 1
 
 # Contribution
 
-Any idea of improvement will be welcomed. But I don't wanna add the feature of modifying cheat sheet right in Alfred because it's what it supposed to do. Use vim or other editors you like.
+Any idea of improvement will be welcomed. But I don't wanna add the feature of modifying cheat sheet right in Alfred because it isn't what it is supposed to do. Use vim or other editors you like.
