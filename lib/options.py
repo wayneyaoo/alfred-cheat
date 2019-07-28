@@ -9,12 +9,12 @@ class Options:
         return None
 
     def search(self, sheetName, keyword):
-        if sheetName not in self._parser.availableSheets():
-            Options.warning("Cheat sheet not found.","", self._workflow)
-            return None
         if sheetName==None:
             ret=self._parser.searchAcrossAll(keyword, self._workflow)
         else:
+            if sheetName not in self._parser.availableSheets():
+                Options.warning("Cheat sheet not found.","", self._workflow)
+                return None
             ret=self._parser.searchInSheet(keyword, sheetName, self._workflow)
         if ret==[]:
             Options.warning("Not found", "No match found for search {}".format(keyword), self._workflow)
