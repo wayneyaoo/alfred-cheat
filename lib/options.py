@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from workflow.workflow import ICON_HELP as WARNINGICON
+from workflow.workflow import ICON_NOTE as HINT
 
 # Switches that autually controls the workflow behavior
 class Options:
@@ -31,6 +32,8 @@ class Options:
 
     def list(self, sheetName):
         ret=self._parser.list(sheetName)
+        if ret==[]:
+            Options.hint("Empty cheatsheet", "", self._workflow)
         for item in ret:
             self._workflow.add_item(
                     title=item.get("command"),
@@ -60,5 +63,14 @@ class Options:
                 title=msg,
                 subtitle=subtitle,
                 icon=WARNINGICON,
+                )
+        return None
+
+    @staticmethod
+    def hint(msg, subtitle, workflow):
+        workflow.warn_empty(
+                title=msg,
+                subtitle=subtitle,
+                icon=HINT,
                 )
         return None

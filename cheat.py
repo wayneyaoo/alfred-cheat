@@ -21,6 +21,8 @@ def main(workflow):
 
     if len(tokens)<2:
         sheetName="" if len(tokens)==0 else tokens[0]
+        if sheetName=="--search":
+            Options.hint("Globally searching for ...?", "In global mode", workflow)
         handler=options.showAvailable if sheetName not in parser.availableSheets() else options.list
         handler(sheetName)
     else:

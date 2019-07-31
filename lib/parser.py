@@ -5,11 +5,23 @@ from workflow import MATCH_ALL, MATCH_ALLCHARS
 class Parser:
     def __init__(self,path):
         self._path=path
-        self._available=os.listdir(self._path)
+        self._sheetMapping={} # {cheatsheet: /home/somedir/cheatsheet}
+        self._available=self._enumAvailableSheets()
         return None
 
     def availableSheets(self):
         return self._available
+
+    def _enumAvailableSheets(self):
+        ret=[]
+        for root, dirname, files in os.walk(self._path,followlinks=True):
+            dirname[:]=[d for d in dirname if not d.startswith(".")]
+            files=[f for f in files if not f.startswith(".")]
+            ret.extend(files)
+            # update the cheat sheet mapping so that we can find the file location
+            self._sheetMapping.update({cheatsheet: "".join([root,"/",cheatsheet]) for cheatsheet in files})
+        return ret
+
 
     def list(self, sheetName):
         return [] if sheetName not in self._available else self.__parseSheet(sheetName) # return value: [{}, {}, {}, ...]
@@ -24,7 +36,7 @@ class Parser:
         return self.filter(self.__parseSheet(sheetName), keyword, workflow)
 
     def __parseSheet(self, filename):
-        with open(os.path.join(self._path,filename), 'r') as f:
+        with open(self._sheetMapping.get(filename), 'r') as f:
             content=f.read().decode('utf-8',"replace").strip()
         # Tokenize to get each "item" by spliting the "\n\n". This rule must be repspected
         content=[item.strip() for item in content.split("\n\n")]
