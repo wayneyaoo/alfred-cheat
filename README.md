@@ -84,6 +84,8 @@ The above sheet will be parsed like this:
 
 ![](assets/demosheet.png)
 
+Kindly note that **hidden cheatsheets (starting with `.`) will be ignored and hidden directory will be ignored as well**. Hierachical structure is supported but that's only for your management purpose. This tool will only "flatten" every cheatsheets in the base directory. i.e., `cheat/mydir/yourdir/somecheat` will be equivalent to `cheat/somecheat` in its perspective. Also make sure you don't have duplicated cheatsheets in different directories otherwise only one of them will be dominant. Thanks for [@Blackvz](https://github.com/Blackvz) for the feature suggestion [#4](https://github.com/wx-Yao/alfred-cheat/issues/4).
+
 # Compatibility
 
 This workflow works out of the box (zero dependencies). It's tested on **macOS 10.14.5 Mojave** with **Alfred 4**. You need the [powerpack](https://www.alfredapp.com/shop/) to get it working. I believe it works with Alfred3 on any macOS after 10.10 Yosemite but that hasn't been tested. Report an issue if there's a problem.
