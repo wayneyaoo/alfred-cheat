@@ -27,13 +27,13 @@ The moto is: write your own cheat sheets very simply and make them searchable us
 
   ​	 `cf <cheatsheet_folder>`
   
-  You can use  absolute or relative path to specify `<cheatsheet_folder>`. 
+  You can use absolute or relative path to specify `<cheatsheet_folder>`. 
 
 Then, you're good to go:
 
-- To list all your cheat: `cht`
+- To list all your cheatsheets: `cht`
 
-- To search and list the content of one of your cheat: `cht <sheet_name>`. Fuzzy search and autocomplete is supported (thanks to [deanishe](https://www.deanishe.net)).
+- To search and list the content of one of your cheatsheet: `cht <sheet_name>`. Fuzzy search and autocomplete is supported (thanks to [deanishe](https://www.deanishe.net)).
 
 - To search in a specific sheet indexed by some keyword: 
 
