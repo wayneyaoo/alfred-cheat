@@ -1,95 +1,144 @@
-# Alfred-cheat <img src="icon.png" width="100" align="right"/> ![GitHub All Releases](https://img.shields.io/github/downloads/wx-Yao/alfred-cheat/total.svg)
-**Start writing your very own cheat sheets in your way and make them searchable using Alfred!**
+# Alfred-cheat <img src="icon.png" width="100" align="right"/> ![GitHub All Releases](https://img.shields.io/github/downloads/odapg/alfred-cheat/total.svg)
+This workflow is based on wx-Yao's original [Alfred-cheat](https://github.com/wx-Yao/alfred-cheat). It adds a few features, in particular a quicklook view.
+
+It relies on deanishe's [Alfred-Workflow](https://www.deanishe.net/alfred-workflow/), and was initally inspired by [cheat](https://github.com/cheat/cheat). 
+
+------
+
+The moto is: write your own cheat sheets very simply and make them searchable using Alfred!
+
+# Download via [release](https://github.com/odapg/alfred-cheat/releases)
 
 # Demo
 
-*Every sheet shown in the demo should be your knowledge base and is totally customizable.*
+![Demo...](assets/demo.gif)
 
-![...loading demo gif](assets/demo.gif)
 
-# About & Acknowledgement
-
-This project was initally inspired by [cheat](https://github.com/cheat/cheat). I attempted to wrap around it but failed because that project wasn't intended to be wrapped around. So this project ended up a separate one. These two projects serve similar purpose in different working environments. With the help of alfred, your efficiency in searching your cheat sheets will be significantly boosted. And the better news is, you're in complete control of your cheat sheets unlike [tldr](https://github.com/tldr-pages/tldr) (It's good though if you want it "just work").
-
-I built this workflow because:
-
-1. I want faster searching than the original [cheat](https://github.com/cheat/cheat) because that project is commandline based. Sometimes I want a very quick view and don't wanna popup a shell.
-
-2. I want to build my own knowledge base instead of community-driven cheat sheets like [tldr](https://github.com/tldr-pages/tldr) does.
-
-**Disclaimer**:
-
-All codes in directory `workflow` are dependencies from [this project](https://github.com/deanishe/alfred-workflow). They're not my work and is the only "dependency" for this project. Since it's included in this repo, the workflow user doesn't have to concern about dependencies.
-
-# Download via [release](https://github.com/wx-Yao/alfred-cheat/releases)
 
 # How it works
 
-1. You define a directory to store your cheat sheets, which are essentially text files. And name the file the command your wanna record. e.g, `nmap`, `top`, `tar` etc. (tips: you can start with the cheat sheets provided by [cheat](https://github.com/cheat/cheat))
-
-2. You write your cheat sheet according to the [rules](#parsing-rule) (very intuitive and tolerant) bit by bit.
-
-3. Tell the workflow where that directory is and start searching.
+1. Define a directory to store your cheatsheets.
+2. Write your cheatsheet according to the very simple [rule](#rules) described below or download cheatsheet from [cheatsheet](https://github.com/cheat/cheatsheets)[^1] and put them in that directory. 
+3. Tell the workflow where that directory is.
 
 # Usage
 
-First, you need to specify your sheet directory like this. Otherwise, it doesn't work. Both absolute or relative path will work.
+- First,  specify your sheet directory (once for all) by using
 
-![](assets/config.png)
+  ​	 `cf <cheatsheet_folder>`
+  You can use  absolute or relative path to specify `<cheatsheet_folder>`. 
 
-Then, you're good to go.
+Then, you're good to go:
 
-- To list all your cheat: `cheat`
+- To list all your cheat: `cht`
 
-- To search and list the content of one of your cheat: `cheat <sheet name>`. Fuzzy search and autocomplete is supported.
+- To search and list the content of one of your cheat: `cht <sheet_name>`. Fuzzy search and autocomplete is supported (thanks to [deanishe](https://www.deanishe.net)).
 
-- To search in a specific sheet indexed by some keyword: `cheat <sheet name> <keyword>`.
+- To search in a specific sheet indexed by some keyword: 
 
-- To search across all your sheets for some keyword: `cheat --search <keyword>`
+  `cht <sheet_name> <keyword>`.
 
-- When you find your desired record and you wanna paste it directly to the app you're using (e.g., Terminal or iTerm2), hit `Enter`. This behavior can be changed in the Alfred setting ([#3](https://github.com/wx-Yao/alfred-cheat/issues/2#issuecomment-509689404)).
+- To search across all your sheets for some keyword:
 
-- If you like to just copy, hit `cmd-c`.
+   `cht --search <keyword>`
 
-# Parsing rule
+- You can paste the selected record directly to the app you're using (e.g., Terminal) by hitting `↵`. 
 
-It's not even a rule... You just need to remember two things when writing your cheat sheet:
+- If you like to just copy, hit `⌘C`.
 
-1. Comment first, then the command.
+New!
 
-2. Separate each `comment, command` pair with 2 newlines. (one newline visually)
+- Open your cheatsheet file in your text editor by hitting `⌘↵`.
 
-That's it.
+- See an item in large type by hitting `⌘L`.
 
-e.g. this cheat sheet is called `demosheet`. Its content is the following:
+- Open a quicklook view of your selection by either hitting `⇧` or `⌘Y`.
+
+  
+
+**Remark.** I changed wx-Yao's `cheat` keyword into `cht` because I find it quicker. But H.P. Lovecraft's fans can easily reverse this change.
+
+# <a name="rules"></a>Parsing rule
+
+The basic rule is very simple:
+
+1. First the comment (preceded by `#`), then the command.
+
+2. Separate each `comment, command` pair with 2 newlines (one newline visually).
+
+Here is an example.
 
 ```
 # This is a one line comment. 
-command one goes here.
+Command one goes here.
 
 # This is a second comment for the second command
 # Yes we can have multiple line comment.
-# But remember only the last line will be considered "command".
-command two goes here
+Command 2 goes here
+And now you can also have two commands!
 
-#
-command three: in rare cases you don't have any comment, keep an empty # above.
+You can have commands without comments
 
-# Any failed parsing will be ignored, like this line because it isn't associated with a command
+# but no comments without command -- this is ignored
 
-or this line because it's a single line.
+And remember to separate blocks by 2 newlines (1 visually)!
 ```
 
 The above sheet will be parsed like this:
 
-![](assets/demosheet.png)
+![demosheet](assets/demosheet.jpg)
 
-Kindly note that **hidden cheatsheets (starting with `.`) will be ignored and hidden directory will be ignored as well**. Hierachical structure is supported but that's only for your management purpose. This tool will only "flatten" every cheatsheets in the base directory. i.e., `cheat/mydir/yourdir/somecheat` will be equivalent to `cheat/somecheat` in its perspective. Also make sure you don't have duplicated cheatsheets in different directories otherwise only one of them will be dominant. Thanks for [@Blackvz](https://github.com/Blackvz) for the feature suggestion [#4](https://github.com/wx-Yao/alfred-cheat/issues/4).
+New!
+
+- You can add *hidden blocks* in your file that will not appear in Alfred nor in the Quicklook view: simply begin the block by `/*`(no need to close the block)
+- You can add *sections* that will not appear in Alfred but that will appear in the Quicklook view. Begin the block by `//`.
+
+Example.
+
+```
+/* This is the beginning of my Alfred cheatsheet.
+You can put unicode characters such as ⌘ or ⌥ without problem.
+
+// Basic hotkeys 
+
+#Open file or application in default application 
+⌘ o
+
+#Search the currently typed query in Spotlight 
+⌥ ↩
+
+#Search the currently typed query in default web search
+⌃ ↩
+
+#Reveal in Finder (if the result is a local file) 
+⌘ ↩
+
+// Files and applications
+
+#Navigate to your home folder
+~
+```
+
+This will give the following result in Quicklook.
+
+![Quicklook example](assets/quicklook.jpg)
+
+
+
+**Remark.** Hidden cheatsheets (starting with `.`) as well as hidden directories are ignored. Hierachical structure is supported but that's only for your management purpose. This tool only "flattens" the hierarchy in the base directory. i.e., `cheat/somedir/otherdir/somecheat` will be equivalent to `cheat/somecheat` in its perspective. Also make sure you don't have duplicated cheatsheets in different directories otherwise only one of them will be dominant. 
 
 # Compatibility
 
-This workflow works out of the box (zero dependencies). It's tested on **macOS 10.14.5 Mojave** with **Alfred 4**. You need the [powerpack](https://www.alfredapp.com/shop/) to get it working. I believe it works with Alfred3 on any macOS after 10.10 Yosemite but that hasn't been tested. Report an issue if there's a problem.
+This workflow works without dependencies. It has been tested on **macOS 10.14.6 Mojave** with **Alfred 4**. Of course, you need the [powerpack](https://www.alfredapp.com/shop/) to get it working. It has not been tested on other systems. Report an issue if there's a problem.
 
 # Contribution
 
-Any idea of improvement will be welcomed. But I don't wanna add the feature of modifying cheat sheet right in Alfred because it isn't what it is supposed to do. Use vim or other editors you like.
+Any idea of improvement is welcome. As for wx-Yao's original Alfred-cheat, I do not wish to add the feature of modifying cheatsheet right in Alfred because opening it in your text editor is much simpler and efficient.
+
+
+
+------
+
+
+
+[^1]: These may sometines need **very** small adjustments

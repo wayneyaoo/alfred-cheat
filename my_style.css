@@ -1,0 +1,61 @@
+html { font-size: 100%; overflow-y: scroll; }
+
+body {
+color:#444;
+font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+font-size:12px;
+line-height:1.4em;
+padding:0.8em;
+background:#fefefe;
+height: auto;
+}
+
+* { box-sizing: border-box;}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width:  100%; 
+height: 100%;
+}
+
+td {
+vertical-align: top;
+text-align: left;
+max-width:80em ;
+word-wrap:break-word;
+}
+
+/* settings for the title */	
+	
+td.title_cell { 
+width: 100%;
+background-color: #ccc;
+font-weight:bold;
+padding: 1em 0.4em;
+font-size:2.5em;
+color:#111;
+}
+
+/* general settings for columns */
+
+td.column1 { width: 50%; padding: 7px; background-color: #efefef;}
+td.column2 { width: 50%; padding: 7px; background-color: #f8f8f8;}
+
+/* settings for section titles */
+
+.section {
+font-weight:bold;
+padding: 0.8em 0.2em;
+font-size:1.7em;
+color:#111;
+line-height:0em;
+}
+
+/* settings for comments */
+
+.comment{font-size:1em; font-weight:normal;}
+
+/* settings for commands */
+
+.command{font-size:1em; font-weight:bold; }
