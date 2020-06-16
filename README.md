@@ -18,7 +18,7 @@ The moto is: write your own cheat sheets very simply and make them searchable us
 # How it works
 
 1. Define a directory to store your cheatsheets.
-2. Write your cheatsheet according to the very simple [rule](#rules) described below or download cheatsheet from [cheatsheet](https://github.com/cheat/cheatsheets),<sup>1</sup> and put them in that directory. 
+2. Write your cheatsheet according to the very simple [rule](#rules) described below or download cheatsheet from [cheatsheet](https://github.com/cheat/cheatsheets),<sup>1(#myfootnote1)</sup> and put them in that directory. 
 3. Tell the workflow where that directory is.
 
 # Usage
@@ -141,4 +141,4 @@ Any idea of improvement is welcome. As for wx-Yao's original Alfred-cheat, I do 
 
 
 
-<sup>1</sup>: These may sometines need **very** small adjustments
+<a name="footnote1"><sup>1</sup></a>: These may sometines need **very** small adjustments
