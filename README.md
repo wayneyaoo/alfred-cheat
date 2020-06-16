@@ -26,6 +26,7 @@ The moto is: write your own cheat sheets very simply and make them searchable us
 - First,  specify your sheet directory (once for all) by using
 
   ​	 `cf <cheatsheet_folder>`
+  
   You can use  absolute or relative path to specify `<cheatsheet_folder>`. 
 
 Then, you're good to go:
