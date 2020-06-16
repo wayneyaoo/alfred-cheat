@@ -1,4 +1,4 @@
-# Alfred-cheat <img src="icon.png" width="100" align="right"/> ![GitHub All Releases](https://img.shields.io/github/downloads/odapg/alfred-cheat/total.svg)
+# Alfred-cheat <img src="icon.png" width="100" align="right"/> 
 This workflow is based on wx-Yao's original [Alfred-cheat](https://github.com/wx-Yao/alfred-cheat). It adds a few features, in particular a quicklook view.
 
 It relies on deanishe's [Alfred-Workflow](https://www.deanishe.net/alfred-workflow/), and was initally inspired by [cheat](https://github.com/cheat/cheat). 
