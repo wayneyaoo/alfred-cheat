@@ -3,9 +3,9 @@ This workflow is based on wx-Yao's original [Alfred-cheat](https://github.com/wx
 
 It relies on deanishe's [Alfred-Workflow](https://www.deanishe.net/alfred-workflow/), and was initally inspired by [cheat](https://github.com/cheat/cheat). 
 
-------
-
 The moto is: write your own cheat sheets very simply and make them searchable using Alfred!
+
+------
 
 # Download via [release](https://github.com/odapg/alfred-cheat/releases)
 
