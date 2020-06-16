@@ -18,7 +18,7 @@ The moto is: write your own cheat sheets very simply and make them searchable us
 # How it works
 
 1. Define a directory to store your cheatsheets.
-2. Write your cheatsheet according to the very simple [rule](#rules) described below or download cheatsheet from [cheatsheet](https://github.com/cheat/cheatsheets)[^1] and put them in that directory. 
+2. Write your cheatsheet according to the very simple [rule](#rules) described below or download cheatsheet from [cheatsheet](https://github.com/cheat/cheatsheets),[^1] and put them in that directory. 
 3. Tell the workflow where that directory is.
 
 # Usage
