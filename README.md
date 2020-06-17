@@ -57,7 +57,7 @@ New!
 
   
 
-**Remark.** I changed wx-Yao's `cheat` keyword into `cht` because I find it quicker. But H.P. Lovecraft's fans can easily reverse this change.
+**Remark.** I changed wx-Yao's `cheat` keyword into `cht` because I find it quicker. But you can easily reverse this change.
 
 # <a name="rules"></a>Parsing rule
 
