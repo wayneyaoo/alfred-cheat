@@ -23,7 +23,7 @@ The moto is: write your own cheat sheets very simply and make them searchable us
 
 # Usage
 
-- First,  specify your sheet directory (once for all) by using
+- First, specify your cheatsheets directory (once for all) by using
 
   ​	 `cf <cheatsheet_folder>`
   
