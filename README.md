@@ -49,7 +49,7 @@ Then, you're good to go:
 
 New!
 
-- Open your cheatsheet file in your text editor by hitting `⌘↵`.
+- Open your cheatsheet file in your text editor by hitting `⌘↵`.<sup>[2](#footnote2)</sup>
 
 - See an item in large type by hitting `⌘L`.
 
@@ -143,3 +143,5 @@ Any idea of improvement is welcome. As for wx-Yao's original Alfred-cheat, I do 
 
 
 <a name="footnote1"><sup>1</sup></a>: These may sometines need **very** small adjustments
+<a name="footnote2"><sup>2</sup></a>: You can specify your favorite text editor in the Alfred-Cheat preferences in Alfred.
+
