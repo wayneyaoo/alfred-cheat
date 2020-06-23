@@ -43,22 +43,37 @@ class Parser:
         content=re.split("\n\s*\n",content)
         content=[item.strip() for item in content]
         items=[]
+# Adds title
+        if content[0][0:2]=="!!":
+            command=content.pop(0)[2:50].strip()
+        else:
+            command=os.path.basename(filename)
+        type="title"
+        comment=""
+        items.append((type,comment, command))
+# Adds contents        
         for item in content:
             if item[0:2]=="/*":
+#               type="invisible"
                 command=""
+            elif item[0:2]=="//":
+                type="section"
+                command=item[2:80].strip()
+                comment=""                
             else:
+                type="entry"
                 lines=item.split("\n")
                 comment_list=[line[1:] for line in lines if line.startswith('#')]
                 command_list=[line for line in lines if not line.startswith('#')]
                 comment=", ".join(comment_list)
                 command=u"  \u28B8  ".join(command_list)
-            if command !="": items.append((comment, command))
+            if command !="": items.append((type,comment, command))
         if specify_sheet:
-            return [dict(comment=comment, command=command, sheet=filename) for comment,command in items] 
-            # [{comment/command/sheet}, {}, {}...]
+            return [dict(comment=comment, command=command, type=type, sheet=filename) for type,comment,command in items] 
+            # [{comment/command/type}, {}, {}...]
         else: 
-            return [dict(comment=comment, command=command) for comment,command in items] 
-            # [{comment/command}, {}, {}...]
+            return [dict(comment=comment, command=command, type=type) for type,comment,command in items] 
+            # [{comment/command/type}, {}, {}...]
 
     def filter(self, content, keyword, workflow):
         def searchIndex(item):
