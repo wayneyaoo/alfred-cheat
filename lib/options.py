@@ -24,6 +24,7 @@ class Options:
             it=self._workflow.add_item(
                     title=item["command"],
                     subtitle=item["comment"],
+                    largetext=item.get("comment")+"\n"+item.get("command"),
                     copytext=item.get("command"),
                     valid=True,
                     arg=item.get("command")
@@ -44,6 +45,7 @@ class Options:
             it=self._workflow.add_item(
                     title=item.get("command"),
                     subtitle=item.get("comment"),
+                    largetext=item.get("comment")+"\n"+item.get("command"),
                     valid=True,
                     copytext=item.get("command"),
                     arg=item.get("command")
