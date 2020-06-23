@@ -34,6 +34,11 @@ class Options:
             type=item.get("type")
             if type=='entry':
                 sheet=item.get("sheet",'')
+                if sheet:
+                    the_title="[" + sheet + "]  " + item.get("command")
+                else:
+                    the_title=item.get("command")
+                    sheet=sheetName
                 it=self._workflow.add_item(title=the_title,
                                         subtitle=item.get("comment"),
                                         largetext=item.get("comment")+"\n"+item.get("command"),
