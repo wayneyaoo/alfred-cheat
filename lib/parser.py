@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import os
+import os, re
 from workflow import MATCH_ALL, MATCH_ALLCHARS
 
 class Parser:
@@ -35,27 +35,30 @@ class Parser:
     def searchInSheet(self, keyword, sheetName, workflow):
         return self.filter(self.__parseSheet(sheetName), keyword, workflow)
 
-    def __parseSheet(self, filename):
+    def __parseSheet(self, filename, specify_sheet=False):
         with open(self._sheetMapping.get(filename), 'r') as f:
-            content=f.read().decode('utf-8',"replace").strip()
-        # Tokenize to get each "item" by spliting the "\n\n". This rule must be repspected
-        content=[item.strip() for item in content.split("\n\n")]
-        # ASSUME the item pattern is "comment, comment, comment ..., command"
-        # An item doesn't have to contain comments but must have a command
+            content=f.read().decode('utf-8',"replace").strip("\n")
+        # Tokenize to get each "item" by spliting the "\n\n" (possibly with white space characters).
+        # This rule must be respected
+        content=re.split("\n\s*\n",content)
+        content=[item.strip() for item in content]
         items=[]
         for item in content:
-            try:
-                comment, command=item.rsplit("\n",1)
-            except ValueError:
-                continue
-            # Or you wanna see which line doesn't comform to the format
-            #   comment=""
-            #   command="Fail to parse: {}".format(item)
-            # cleanup "#" and \n
-            comment=comment.replace("#","").replace("\n",". ").strip()
-            command=command.strip()
-            items.append((comment, command))
-        return [dict(comment=comment, command=command) for comment,command in items] # [{}, {}, {}...]
+            if item[0:2]=="/*":
+                command=""
+            else:
+                lines=item.split("\n")
+                comment_list=[line[1:] for line in lines if line.startswith('#')]
+                command_list=[line for line in lines if not line.startswith('#')]
+                comment=", ".join(comment_list)
+                command=u"  \u28B8  ".join(command_list)
+            if command !="": items.append((comment, command))
+        if specify_sheet:
+            return [dict(comment=comment, command=command, sheet=filename) for comment,command in items] 
+            # [{comment/command/sheet}, {}, {}...]
+        else: 
+            return [dict(comment=comment, command=command) for comment,command in items] 
+            # [{comment/command}, {}, {}...]
 
     def filter(self, content, keyword, workflow):
         def searchIndex(item):
