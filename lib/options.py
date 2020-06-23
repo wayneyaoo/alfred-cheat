@@ -59,7 +59,12 @@ class Options:
         names=self._parser.availableSheets()
         ret=self._workflow.filter(sheetName, names, key=lambda x: x)
         if ret==[]:
-            Options.warning("Cheat sheet not found.","", self._workflow)
+            if "--search".find(sheetName)==-1:
+                Options.warning("Cheat sheet not found.","", self._workflow)
+            elif "--search" != sheetName:
+                self._workflow.add_item(title="--search",
+                                        subtitle="Searching in global mode",
+                                        autocomplete="--search " )
             return None
         for sheet in ret:
             it=self._workflow.add_item(
@@ -71,6 +76,11 @@ class Options:
                     valid=True,
                     arg= self._parser._sheetMapping.get(sheet),
                     )
+        self._workflow.add_item(
+                title="--search",
+                subtitle="Searching in global mode",
+                autocomplete="--search ",
+                )
         return None
 
     @staticmethod
