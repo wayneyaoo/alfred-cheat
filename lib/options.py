@@ -2,7 +2,7 @@
 from workflow.workflow import ICON_HELP as WARNINGICON
 from workflow.workflow import ICON_NOTE as HINT
 
-# Switches that autually controls the workflow behavior
+# Switches that actually controls the workflow behavior
 class Options:
     def __init__(self, parser, workflow):
         self._parser=parser
@@ -21,12 +21,18 @@ class Options:
             Options.warning("Not found", "No match found for search {}".format(keyword), self._workflow)
             return None
         for item in ret:
-            self._workflow.add_item(
+            it=self._workflow.add_item(
                     title=item["command"],
                     subtitle=item["comment"],
                     copytext=item.get("command"),
                     valid=True,
                     arg=item.get("command")
+                    )
+            it.add_modifier(
+                    'cmd',  # or 'ctrl'?
+                    subtitle='Open the "%s" cheat file in editor' % sheetName,
+                    valid=True,
+                    arg= self._parser._sheetMapping.get(sheetName),
                     )
         return None
 
@@ -35,12 +41,17 @@ class Options:
         if ret==[]:
             Options.hint("Empty cheatsheet", "", self._workflow)
         for item in ret:
-            self._workflow.add_item(
+            it=self._workflow.add_item(
                     title=item.get("command"),
                     subtitle=item.get("comment"),
                     valid=True,
                     copytext=item.get("command"),
                     arg=item.get("command")
+                    )
+            it.add_modifier('cmd',  
+                    subtitle='Open the "%s" cheat file in editor' % sheetName,
+                    valid=True,
+                    arg= self._parser._sheetMapping.get(sheetName),
                     )
         return None
 
@@ -51,9 +62,14 @@ class Options:
             Options.warning("Cheat sheet not found.","", self._workflow)
             return None
         for sheet in ret:
-            self._workflow.add_item(
+            it=self._workflow.add_item(
                     title=sheet,
                     autocomplete=sheet,
+                    )
+            it.add_modifier('cmd',  
+                    subtitle='Open the "%s" cheat file in editor' % sheet,
+                    valid=True,
+                    arg= self._parser._sheetMapping.get(sheet),
                     )
         return None
 
