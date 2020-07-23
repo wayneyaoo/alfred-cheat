@@ -2,22 +2,23 @@
 from workflow.workflow import ICON_HELP as WARNINGICON
 from workflow.workflow import ICON_NOTE as HINT
 
+
 # Switches that autually controls the workflow behavior
 class Options:
     def __init__(self, parser, workflow):
-        self._parser=parser
-        self._workflow=workflow
+        self._parser = parser
+        self._workflow = workflow
         return None
 
-    def search(self, sheetName, keyword):
-        if sheetName==None:
-            ret=self._parser.searchAcrossAll(keyword, self._workflow)
+    def searchInSheetByKeyword(self, sheetName, keyword):
+        if sheetName is None:
+            ret = self._parser.searchAcrossAll(keyword, self._workflow)
         else:
             if sheetName not in self._parser.availableSheets():
-                Options.warning("Cheat sheet not found.","", self._workflow)
+                Options.warning("Cheat sheet not found.", "", self._workflow)
                 return None
-            ret=self._parser.searchInSheet(keyword, sheetName, self._workflow)
-        if ret==[]:
+            ret = self._parser.searchInSheet(keyword, sheetName, self._workflow)
+        if ret == []:
             Options.warning("Not found", "No match found for search {}".format(keyword), self._workflow)
             return None
         for item in ret:
@@ -31,8 +32,8 @@ class Options:
         return None
 
     def list(self, sheetName):
-        ret=self._parser.list(sheetName)
-        if ret==[]:
+        ret = self._parser.list(sheetName)
+        if ret == []:
             Options.hint("Empty cheatsheet", "", self._workflow)
         for item in ret:
             self._workflow.add_item(
@@ -45,10 +46,10 @@ class Options:
         return None
 
     def showAvailable(self, sheetName):
-        names=self._parser.availableSheets()
-        ret=self._workflow.filter(sheetName, names, key=lambda x: x)
-        if ret==[]:
-            Options.warning("Cheat sheet not found.","", self._workflow)
+        names = self._parser.availableSheets()
+        ret = self._workflow.filter(sheetName, names, key=lambda x: x)
+        if ret == []:
+            Options.warning("Cheat sheet not found.", "", self._workflow)
             return None
         for sheet in ret:
             self._workflow.add_item(
@@ -58,7 +59,7 @@ class Options:
         return None
 
     @staticmethod
-    def warning(msg,subtitle,workflow):
+    def warning(msg, subtitle, workflow):
         workflow.warn_empty(
                 title=msg,
                 subtitle=subtitle,
