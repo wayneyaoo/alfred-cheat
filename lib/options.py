@@ -5,6 +5,9 @@ from workflow.workflow import ICON_NOTE as HINT
 
 # Switches that autually controls the workflow behavior
 class Options:
+
+    LARGETEXTPATTERN = "{}\n\n{}"
+
     def __init__(self, parser, workflow):
         self._parser = parser
         self._workflow = workflow
@@ -27,7 +30,8 @@ class Options:
                     subtitle=item["comment"],
                     copytext=item.get("command"),
                     valid=True,
-                    arg=item.get("command")
+                    arg=item.get("command"),
+                    largetext=self.LARGETEXTPATTERN.format(item.get("command"), item.get("comment"))
                     )
         return None
 
@@ -41,13 +45,13 @@ class Options:
                     subtitle=item.get("comment"),
                     valid=True,
                     copytext=item.get("command"),
-                    arg=item.get("command")
+                    arg=item.get("command"),
+                    largetext=self.LARGETEXTPATTERN.format(item.get("command"), item.get("comment"))
                     )
         return None
 
-    def showAvailable(self, sheetName):
-        names = self._parser.availableSheets()
-        ret = self._workflow.filter(sheetName, names, key=lambda x: x)
+    def showAvailable(self, sheetName=""):
+        ret = self._FilterSheetName(sheetName)
         if ret == []:
             Options.warning("Cheat sheet not found.", "", self._workflow)
             return None
@@ -55,8 +59,13 @@ class Options:
             self._workflow.add_item(
                     title=sheet,
                     autocomplete=sheet,
+                    largetext=sheet
                     )
         return None
+
+    def _FilterSheetName(self, query):
+        names = self._parser.availableSheets()
+        return self._workflow.filter(query, names, key=lambda x: x)
 
     @staticmethod
     def warning(msg, subtitle, workflow):

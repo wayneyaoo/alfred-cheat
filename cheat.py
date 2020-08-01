@@ -14,6 +14,7 @@ def main(workflow):
         return -1
 
     parser = Parser(config.getPath())
+    # Note: by pasing workflow as a variable, its state is changed in Options.py logic
     options = Options(parser, workflow)
 
     # Query is whatever comes after "cheat". Stored in one single variable
@@ -22,7 +23,7 @@ def main(workflow):
     tokens = [i.strip() for i in tokens if i != ""]
 
     if len(tokens) == 0:
-        options.showAvailable("")
+        options.showAvailable()
         workflow.send_feedback()
         return None
 
