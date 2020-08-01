@@ -32,7 +32,11 @@ class Options:
                     valid=True,
                     arg=item.get("command"),
                     largetext=self.LARGETEXTPATTERN.format(item.get("command"), item.get("comment"))
-                    )
+                    ).add_modifier(
+                    'cmd',
+                    subtitle="open in editor",
+                    valid=True,
+                    arg=self._parser._sheetMapping.get(sheetName))
         return None
 
     def list(self, sheetName):
@@ -47,7 +51,11 @@ class Options:
                     copytext=item.get("command"),
                     arg=item.get("command"),
                     largetext=self.LARGETEXTPATTERN.format(item.get("command"), item.get("comment"))
-                    )
+                    ).add_modifier(
+                    'cmd',
+                    subtitle="open in editor",
+                    valid=True,
+                    arg=self._parser._sheetMapping.get(sheetName))
         return None
 
     def showAvailable(self, sheetName=""):
@@ -60,7 +68,11 @@ class Options:
                     title=sheet,
                     autocomplete=sheet,
                     largetext=sheet
-                    )
+                    ).add_modifier(
+                    'cmd',
+                    subtitle="open in editor",
+                    valid=True,
+                    arg=self._parser._sheetMapping.get(sheet))
         return None
 
     def _FilterSheetName(self, query):
