@@ -1,6 +1,12 @@
 # Alfred-cheat <img src="icon.png" width="100" align="right"/> ![GitHub All Releases](https://img.shields.io/github/downloads/wx-Yao/alfred-cheat/total.svg)
 **Start writing your very own cheat sheets in your way and make them searchable using Alfred!**
 
+# Notice
+
+- If you have any question about the freshness of this project, checkout this [issue](https://github.com/wayneyaoo/alfred-cheat/issues/25).
+
+- If you're on macOS Monterey 12.3, and it doesn't work, checkout this [issue](https://github.com/wayneyaoo/alfred-cheat/issues/26).
+
 # Demo
 
 *Every sheet shown in the demo should be your knowledge base and is totally customizable.*
