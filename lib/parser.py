@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 import os
 from workflow import MATCH_ALL, MATCH_ALLCHARS
 
@@ -37,7 +37,7 @@ class Parser:
 
     def __parseSheet(self, filename):
         with open(self._sheetMapping.get(filename), 'r') as f:
-            content = f.read().decode('utf-8', "replace").strip()
+            content = f.read().strip()
         # Tokenize to get each "item" by spliting the "\n\n". This rule must be repspected
         content = [item.strip() for item in content.split("\n\n")]
         # ASSUME the item pattern is "comment, comment, comment ..., command"
