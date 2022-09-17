@@ -192,7 +192,7 @@ python3 config.py "{query}"</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Refer to github https://github.com/wx-Yao/Alfred-cheat for details.</string>
+	<string>Refer to github https://github.com/wayneyaoo/Alfred-cheat for details.</string>
 	<key>uidata</key>
 	<dict>
 		<key>01426939-712C-4E7E-A86C-41FB76D04041</key>
@@ -238,6 +238,6 @@ python3 config.py "{query}"</string>
 	<key>version</key>
 	<string>1.2.1</string>
 	<key>webaddress</key>
-	<string>https://github.com/wx-Yao</string>
+	<string>https://github.com/wayneyaoo</string>
 </dict>
 </plist>

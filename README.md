@@ -3,9 +3,9 @@
 
 # Notice
 
-- If you have any question about the freshness of this project, checkout this [issue](https://github.com/wayneyaoo/alfred-cheat/issues/25).
+- Thanks to [@giovannicoppola](https://github.com/giovannicoppola) for porting a [python3 version dependency](https://github.com/NorthIsUp/alfred-workflow-py3) so that this workflow works on macOS >= 12.3 now where default Python version is Python3. Starting from alfred-cheat 1.2.1, the workflow requires Python3 to run, and any version lower than 1.2.1 requires python2. So depending on you macOS version, you migth want to figure out whether you need to install an extra python.
 
-- If you're on macOS Monterey 12.3, and it doesn't work, checkout this [issue](https://github.com/wayneyaoo/alfred-cheat/issues/26).
+- I'm fully switching to Linux DE for personal tasks and Windows for daily work hence won't be able to put a lot of effort on this workflow. It served me well for a long time. I'm still open to new Pull Request if you think new features should be added. But generally this workflow doesn't have a big scope and should always work.
 
 # Demo
 
