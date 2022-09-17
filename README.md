@@ -1,4 +1,4 @@
-# Alfred-cheat <img src="icon.png" width="100" align="right"/> ![GitHub All Releases](https://img.shields.io/github/downloads/wx-Yao/alfred-cheat/total.svg)
+# Alfred-cheat <img src="icon.png" width="100" align="right"/> ![GitHub All Releases](https://img.shields.io/github/downloads/wayneyaoo/alfred-cheat/total.svg)
 **Start writing your very own cheat sheets in your way and make them searchable using Alfred!**
 
 # Notice
