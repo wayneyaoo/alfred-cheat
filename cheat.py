@@ -27,7 +27,7 @@ def main(workflow):
         workflow.send_feedback()
         return None
 
-    if len(tokens) == 1 and tokens[0] == "--search":
+    if len(tokens) == 1 and tokens[0] in ("--search", "-s"):
         Options.hint("Globally searching for ...?", "In global mode", workflow)
         workflow.send_feedback()
         return None
@@ -42,7 +42,7 @@ def main(workflow):
         workflow.send_feedback()
         return None
 
-    sheetName = None if tokens[0] == "--search" else tokens[0]
+    sheetName = None if tokens[0] in ["--search", "-s"] else tokens[0]
     searchTerm = tokens[1]
     options.searchInSheetByKeyword(sheetName, searchTerm)
 
