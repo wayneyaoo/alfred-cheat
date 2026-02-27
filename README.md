@@ -1,3 +1,7 @@
+# Archive Notice
+
+**I've fully switched to Linux DE as my daily drive, hence won't be able to invest more on this workflow. It served me well for a long time as a Mac user. Unfortunately, I don't see any active forks taking this forward so if you still need the tool, you're on your own.**
+
 # Alfred-cheat <img src="icon.png" width="100" align="right"/> ![GitHub All Releases](https://img.shields.io/github/downloads/wayneyaoo/alfred-cheat/total.svg)
 **Start writing your very own cheat sheets in your way and make them searchable using Alfred!**
 
@@ -5,7 +9,7 @@
 
 - Thanks to [@giovannicoppola](https://github.com/giovannicoppola) for porting a [python3 version dependency](https://github.com/NorthIsUp/alfred-workflow-py3) so that this workflow works on macOS >= 12.3 now where default Python version is Python3. Starting from alfred-cheat 1.2.1, the workflow requires Python3 to run, and any version lower than 1.2.1 requires python2. So depending on you macOS version, you migth want to figure out whether you need to install an extra python.
 
-- I'm fully switching to Linux DE for personal tasks and Windows for daily work hence won't be able to put a lot of effort on this workflow. It served me well for a long time. I'm still open to new Pull Request if you think new features should be added. But generally this workflow doesn't have a big scope and should always work.
+
 
 # Demo
 
